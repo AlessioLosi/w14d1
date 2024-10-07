@@ -1,0 +1,41 @@
+esercizio 1
+SELECT * FROM public.clienti
+where nome='mario' 
+
+esercizio 2
+SELECT * FROM public.clienti
+where anno_nascita=1982
+
+esercizio 3
+SELECT * FROM public.fatture
+where iva=20
+
+esercizio 4
+SELECT * FROM Prodotti
+WHERE EXTRACT(YEAR FROM data_attivazione) = 2017
+AND (in_produzione = TRUE OR in_commercio = TRUE);
+
+esercizio 5
+SELECT(fatture.numero_fattura, importo, clienti.id_cliente, clienti.nome, clienti.cognome, clienti.regione_residenza)
+from fatture
+JOIN clienti ON fatture.id_cliente = clienti.id_cliente
+WHERE fatture.importo < 1000;
+
+esercizio 6
+SELECT fatture.numero_fattura, fatture.importo, fatture.iva, fatture.data_fattura, fornitori.numero_fornitore, fornitori.regione_residenza, fornitori.denominazione
+from fatture
+JOIN fornitori ON fatture.numero_fornitore = fornitori.numero_fornitore
+
+esercizio 7
+select * from fatture
+WHERE EXTRACT(YEAR FROM data_fattura) = 2023
+AND (iva=20);
+
+esercizio 8 
+SELECT EXTRACT(YEAR FROM data_fattura) AS anno_fatturazione,
+       COUNT(numero_fattura) AS numero_fatture,
+       SUM(importo) AS sum_importo
+FROM Fatture
+GROUP BY EXTRACT(YEAR FROM data_fattura)
+ORDER BY anno_fatturazione;
+
