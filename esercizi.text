@@ -39,3 +39,16 @@ FROM Fatture
 GROUP BY EXTRACT(YEAR FROM data_fattura)
 ORDER BY anno_fatturazione;
 
+
+Extra 1
+SELECT fatture.data_fattura FROM public.fatture where fatture.tipologia in ('a')
+
+Extra 2 
+
+
+Extra 3
+SELECT * FROM public.clienti
+join fatture on clienti.id_cliente=fatture.id_cliente
+WHERE anno_nascita = 1982
+AND (fatture.importo>50);
+
